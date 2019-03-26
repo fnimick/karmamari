@@ -110,9 +110,9 @@ class Karmamari < SlackRubyBot::Bot
       # (5..2).to_a returns an empty Array,
       # which is why we play Ranger ordering games here
       if karma_delta_by_object[word].positive?
-        ((score - karma_delta_by_object[word])..score).to_a
+        ((score - karma_delta_by_object[word])...score).to_a
       else
-        (score..(score - karma_delta_by_object[word])).to_a
+        ((score + 1)..(score - karma_delta_by_object[word])).to_a
       end
     end.flatten.sort.uniq
 
